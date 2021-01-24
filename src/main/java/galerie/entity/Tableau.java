@@ -11,7 +11,8 @@ import lombok.*;
 public class Tableau {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
-
+    
+    @Column(unique=true)
     @NonNull
     private String titre;
 
@@ -23,8 +24,8 @@ public class Tableau {
     @ToString.Exclude
     private Transaction vendu;    
     
-    @ManyToOne
-    // Peut-être null
+    @ManyToOne(cascade = CascadeType.ALL)
+    
     Artiste auteur;
 
     @ToString.Exclude
